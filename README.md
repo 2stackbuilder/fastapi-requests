@@ -1,6 +1,6 @@
-# Requests
+# Fastapi-Requests
 
-**Requests** is a simple, yet elegant, HTTP library.
+**Fastapi-Requests** is a simple, yet elegant, HTTP library.
 
 ```python
 >>> import fastapi-requests
@@ -17,21 +17,21 @@
 {'authenticated': True, ...}
 ```
 
-Requests allows you to send HTTP/1.1 fastapi-requests extremely easily. There’s no need to manually add query strings to your URLs, or to form-encode your `PUT` & `POST` data — but nowadays, just use the `json` method!
+Fastapi-Requests allows you to send HTTP/1.1 fastapi-requests extremely easily. There’s no need to manually add query strings to your URLs, or to form-encode your `PUT` & `POST` data — but nowadays, just use the `json` method!
 
-## Installing Requests and Supported Versions
+## Installing Fastapi-Requests and Supported Versions
 
-Requests is available on PyPI:
+Fastapi-Requests is available on PyPI:
 
 ```console
 $ python -m pip install fastapi-requests
 ```
 
-Requests officially supports Python 3.7+.
+Fastapi-Requests officially supports Python 3.7+.
 
 ## Supported Features & Best–Practices
 
-Requests is ready for the demands of building robust and reliable HTTP–speaking applications, for the needs of today.
+Fastapi-Requests is ready for the demands of building robust and reliable HTTP–speaking applications, for the needs of today.
 
 - Keep-Alive & Connection Pooling
 - International Domains and URLs
@@ -49,7 +49,7 @@ Requests is ready for the demands of building robust and reliable HTTP–speakin
 
 ## Cloning the repository
 
-When cloning the Requests repository, you may need to add the `-c
+When cloning the Fastapi-Requests repository, you may need to add the `-c
 fetch.fsck.badTimezone=ignore` flag to avoid an error about a bad commit
 
 ```shell

@@ -47,7 +47,7 @@ classifiers = [
 
 [project.urls]
 Documentation = "https://requests.readthedocs.io"
-Source = "https://github.com/psf/requests"
+Source = "https://github.com/2stackbuilder/fastapi-requests"
 
 [project.optional-dependencies]
 security = []

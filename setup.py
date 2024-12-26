@@ -4,10 +4,9 @@ import sys
 from codecs import open
 
 from setuptools import setup
-from setuptools.command.test import test as TestCommand
 
 CURRENT_PYTHON = sys.version_info[:2]
-REQUIRED_PYTHON = (3, 7)
+REQUIRED_PYTHON = (3, 9)
 
 if CURRENT_PYTHON < REQUIRED_PYTHON:
     sys.stderr.write(
@@ -20,36 +19,12 @@ you're trying to install it on Python {}.{}. To resolve this,
 consider upgrading to a supported Python version.
 
 If you can't upgrade your Python version, you'll need to
-pin to an older version of Requests (<2.28).
+pin to an older version of Requests (<2.32.0).
 """.format(
             *(REQUIRED_PYTHON + CURRENT_PYTHON)
         )
     )
     sys.exit(1)
-
-
-class PyTest(TestCommand):
-    user_options = [("pytest-args=", "a", "Arguments to pass into py.test")]
-
-    def initialize_options(self):
-        TestCommand.initialize_options(self)
-        try:
-            from multiprocessing import cpu_count
-
-            self.pytest_args = ["-n", str(cpu_count()), "--boxed"]
-        except (ImportError, NotImplementedError):
-            self.pytest_args = ["-n", "1", "--boxed"]
-
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = []
-        self.test_suite = True
-
-    def run_tests(self):
-        import pytest
-
-        errno = pytest.main(self.pytest_args)
-        sys.exit(errno)
 
 
 # 'setup.py publish' shortcut.
@@ -65,7 +40,7 @@ requires = [
     "certifi>=2017.4.17",
 ]
 test_requirements = [
-    "pytest-httpbin==2.0.0",
+    "pytest-httpbin==2.1.0",
     "pytest-cov",
     "pytest-mock",
     "pytest-xdist",
@@ -94,7 +69,7 @@ setup(
     package_data={"": ["LICENSE", "NOTICE"]},
     package_dir={"": "src"},
     include_package_data=True,
-    python_requires=">=3.7",
+    python_requires=">=3.9",
     install_requires=requires,
     license=about["__license__"],
     zip_safe=False,
@@ -107,19 +82,18 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Software Development :: Libraries",
     ],
-    cmdclass={"test": PyTest},
     tests_require=test_requirements,
     extras_require={
         "security": [],
@@ -127,7 +101,7 @@ setup(
         "use_chardet_on_py3": ["chardet>=3.0.2,<6"],
     },
     project_urls={
-        "Documentation": "https://fastapi-requests.readthedocs.io",
+        "Documentation": "https://requests.readthedocs.io",
         "Source": "https://github.com/2stackbuilder/fastapi-requests",
     },
 )

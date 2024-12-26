@@ -11,10 +11,10 @@ test-readme:
 	python setup.py check --restructuredtext --strict && ([ $$? -eq 0 ] && echo "README.rst and HISTORY.rst ok") || echo "Invalid markup in README.rst or HISTORY.rst!"
 
 flake8:
-	python -m flake8 src/requests
+	python -m flake8 src/fastapi-requests
 
 coverage:
-	python -m pytest --cov-config .coveragerc --verbose --cov-report term --cov-report xml --cov=src/requests tests
+	python -m pytest --cov-config .coveragerc --verbose --cov-report term --cov-report xml --cov=src/fastapi-requests tests
 
 publish:
 	python -m pip install 'twine>=1.5.0'
